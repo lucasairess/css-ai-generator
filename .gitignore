@@ -14,5 +14,4 @@ desktop.ini
 *.suo
 *.user
 
-# Chaves / Configurações locais
 config.js

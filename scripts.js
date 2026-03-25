@@ -76,11 +76,18 @@ async function gerarCodigo() {
     esconderErro()
     setLoading(true)
 
-    // Validação de segurança: verificar se a API Key foi configurada no config.js
-    if (typeof GROQ_API_KEY === 'undefined' || GROQ_API_KEY === "SUA_API_KEY_AQUI" || GROQ_API_KEY === "") {
-        mostrarErro("⚠️ Chave da API não configurada. Crie o arquivo config.js a partir do config.example.js e adicione sua chave (veja o README).")
-        setLoading(false)
-        return
+    // Validação de segurança: verificar se a API Key existe no escopo
+    let apiKey = typeof GROQ_API_KEY !== 'undefined' ? GROQ_API_KEY : "";
+    
+    // Se não existir, pede a chave pro usuário na hora
+    if (!apiKey || apiKey === "SUA_API_KEY_AQUI") {
+        apiKey = prompt("Para testar, insira sua API Key da Groq (ela funcionará apenas nesta sessão e não será salva em lugar nenhum):", "");
+        
+        if (!apiKey) {
+            mostrarErro("Acesso cancelado: A API Key é obrigatória para gerar o código. Recarregue a página para tentar novamente.")
+            setLoading(false)
+            return
+        }
     }
 
     try {
@@ -88,7 +95,7 @@ async function gerarCodigo() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${GROQ_API_KEY}`
+                "Authorization": `Bearer ${apiKey}`
             },
             body: JSON.stringify({
                 model: GROQ_MODEL,
