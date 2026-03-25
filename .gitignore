@@ -13,3 +13,6 @@ desktop.ini
 .vscode/
 *.suo
 *.user
+
+# Chaves / Configurações locais
+config.js

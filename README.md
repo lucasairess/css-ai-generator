@@ -41,11 +41,13 @@ Sem frameworks, sem build step. Projeto 100% vanilla, abre direto no browser.
 ## Como usar
 
 1. **Clone ou baixe** o repositório
-2. Abra o arquivo `index.html` em qualquer navegador moderno (Chrome, Firefox, Edge)
-3. ⚠️ Antes de usar: substitua a API Key no arquivo `scripts.js` pela sua chave pessoal obtida em [console.groq.com](https://console.groq.com)
-4. Digite uma descrição no campo de texto (ex: *"Botão verde com efeito hover"*)
-5. Clique em **Gerar Código ⚡️**
-6. Aguarde a resposta da IA — o código aparece à esquerda e o resultado ao vivo à direita
+3. ⚠️ **Configuração da API:**
+   - Copie ou renomeie o arquivo `config.example.js` para `config.js`
+   - Abra o novo `config.js` e insira sua API Key pessoal obtida em [console.groq.com](https://console.groq.com)
+4. Abra o arquivo `index.html` em qualquer navegador moderno (Chrome, Firefox, Edge)
+5. Digite uma descrição no campo de texto (ex: *"Botão verde com efeito hover"*)
+6. Clique em **Gerar Código ⚡️**
+7. Aguarde a resposta da IA — o código aparece à esquerda e o resultado ao vivo à direita
 
 ---
 
@@ -56,6 +58,8 @@ Projeto Gerador de CSS DevClub/
 ├── index.html          # Estrutura HTML da aplicação
 ├── styles.css          # Estilos globais + tokens CSS + layout
 ├── scripts.js          # Lógica de integração com a API Groq
+├── config.example.js   # Exemplo de configuração da API
+├── config.js           # (Você deve criar) Sua API Key protegida
 └── README.md           # Esta documentação
 ```
 
@@ -106,7 +110,7 @@ A API retorna um objeto `choices[]` onde `choices[0].message.content` contém o 
 
 | # | Problema | Severidade | Correção |
 |---|----------|------------|---------|
-| 1 | **API Key exposta** no código-fonte JS | 🔴 Crítico | Mover para variável de ambiente / backend proxy |
+| 1 | **API Key exposta** | 🔴 Crítico | Corrigido: Movido para `config.js` (ignorado no git) |
 | 2 | Sem estado de **loading** durante requisição | 🟠 Alto | Implementado na versão atual |
 | 3 | Sem **tratamento de erro** da API | 🟠 Alto | Implementado na versão atual |
 | 4 | `<p>` usado para bloco de código | 🟡 Médio | Usar `<pre><code>` para semântica correta |

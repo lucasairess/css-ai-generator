@@ -21,8 +21,7 @@
 
 // ── Configuração da API ──────────────────────────────────────
 const GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
-const GROQ_API_KEY  = "SUA_API_KEY_AQUI" // ⚠️ Substitua pela sua chave em https://console.groq.com
-// Em produção, NUNCA exponha a chave no código — use um backend para intermediar as chamadas.
+// A constante GROQ_API_KEY é carregada automaticamente a partir do config.js
 const GROQ_MODEL    = "llama-3.3-70b-versatile"
 
 // ── Elementos do DOM ─────────────────────────────────────────
@@ -76,6 +75,13 @@ async function gerarCodigo() {
 
     esconderErro()
     setLoading(true)
+
+    // Validação de segurança: verificar se a API Key foi configurada no config.js
+    if (typeof GROQ_API_KEY === 'undefined' || GROQ_API_KEY === "SUA_API_KEY_AQUI" || GROQ_API_KEY === "") {
+        mostrarErro("⚠️ Chave da API não configurada. Crie o arquivo config.js a partir do config.example.js e adicione sua chave (veja o README).")
+        setLoading(false)
+        return
+    }
 
     try {
         const resposta = await fetch(GROQ_ENDPOINT, {
