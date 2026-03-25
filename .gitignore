@@ -1,0 +1,15 @@
+# Arquivos ignorados pelo git
+# Nenhum arquivo sensível deve ficar de fora — mas se houver,
+# adicionar aqui. Exemplo para quando mover a API key para .env:
+# .env
+# .env.local
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+*.suo
+*.user

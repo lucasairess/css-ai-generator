@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de CSS e HTML com Inteligência Artificial. Descreva o que imagina e veja o código ser criado na hora.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>DevClub — Gerador de CSS com IA</title>
+</head>
+
+<body>
+
+    <!-- Background animado -->
+    <div class="bg-orbs" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- Conteúdo principal -->
+    <main class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="badge">⚡ Powered by LLaMA 3.3</div>
+            <h1>CSS Gerador <span>com IA</span></h1>
+            <p>Descreva o que você imagina e veja a mágica acontecer</p>
+        </header>
+
+        <!-- Formulário de geração -->
+        <section class="form-section">
+            <textarea
+                id="caixa-texto"
+                class="caixa-texto"
+                rows="3"
+                placeholder="Ex: Uma bola azul saltando com sombra roxa..."
+                aria-label="Descreva o que deseja gerar"
+            ></textarea>
+
+            <div class="form-actions">
+                <button id="botao-gerar" class="botao-gerar" aria-label="Gerar código CSS com IA">
+                    <span class="btn-text">Gerar Código ⚡️</span>
+                    <span class="btn-loading" aria-hidden="true">
+                        <span class="spinner"></span>
+                        Gerando...
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Mensagem de erro -->
+        <div id="mensagem-erro" class="mensagem-erro" role="alert" aria-live="polite" hidden>
+            <span class="erro-icone">⚠️</span>
+            <span id="erro-texto"></span>
+        </div>
+
+        <!-- Output: Código e Preview lado a lado -->
+        <section class="output-section" id="output-section" hidden>
+            <div class="output-grid">
+
+                <!-- Coluna: Código -->
+                <div class="output-card">
+                    <div class="output-card-header">
+                        <div class="output-dots" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <h2 class="output-card-title">Código Gerado</h2>
+                        <button class="botao-copiar" id="botao-copiar" aria-label="Copiar código gerado">
+                            <span class="copy-icon">📋</span>
+                            <span class="copy-text">Copiar</span>
+                        </button>
+                    </div>
+                    <pre class="bloco-codigo" id="bloco-codigo" aria-label="Código HTML e CSS gerado"></pre>
+                </div>
+
+                <!-- Coluna: Preview -->
+                <div class="output-card">
+                    <div class="output-card-header">
+                        <div class="output-dots" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <h2 class="output-card-title">Preview ao Vivo</h2>
+                        <span class="preview-badge">live</span>
+                    </div>
+                    <iframe
+                        class="resultado-codigo"
+                        id="resultado-codigo"
+                        title="Preview do código gerado"
+                        sandbox="allow-scripts"
+                    ></iframe>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,574 @@
+/* ============================================================
+   DESIGN SYSTEM — CSS Custom Properties (Tokens)
+   ============================================================ */
+:root {
+    /* ── Cores ── */
+    --color-black:         #09090b;
+    --color-surface:       #141419;
+    --color-surface-raised:#1c1c23;
+    --color-border:        #27272a;
+    --color-text-primary:  #fafafa;
+    --color-text-body:     #e4e4e7;
+    --color-text-muted:    #71717a;
+
+    --color-brand:         #22c55e;
+    --color-brand-hover:   #16a34a;
+    --color-brand-glow:    rgba(34, 197, 94, 0.20);
+    --color-brand-dim:     rgba(34, 197, 94, 0.08);
+
+    --color-code:          #34d399;
+    --color-error:         #ef4444;
+    --color-error-bg:      rgba(239, 68, 68, 0.08);
+
+    /* ── Tipografia ── */
+    --font-family-base:    'Inter', sans-serif;
+    --font-family-mono:    'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+
+    --font-size-xs:        12px;
+    --font-size-sm:        13px;
+    --font-size-base:      16px;
+    --font-size-lg:        18px;
+    --font-size-xl:        20px;
+    --font-size-2xl:       24px;
+    --font-size-4xl:       40px;
+
+    --font-weight-regular:  400;
+    --font-weight-medium:   500;
+    --font-weight-semibold: 600;
+    --font-weight-bold:     700;
+
+    --line-height-tight:   1.25;
+    --line-height-normal:  1.5;
+    --line-height-relaxed: 1.8;
+    --line-height-code:    1.9;
+
+    /* ── Espaçamento ── */
+    --space-1:  4px;
+    --space-2:  8px;
+    --space-3:  12px;
+    --space-4:  16px;
+    --space-5:  20px;
+    --space-6:  24px;
+    --space-8:  32px;
+    --space-10: 40px;
+    --space-12: 48px;
+
+    /* ── Bordas ── */
+    --border:      1px solid var(--color-border);
+    --radius-sm:   6px;
+    --radius-md:   10px;
+    --radius-lg:   14px;
+    --radius-xl:   18px;
+
+    /* ── Sombras ── */
+    --shadow-sm:   0 1px 3px rgba(0,0,0,0.35);
+    --shadow-md:   0 4px 16px rgba(0,0,0,0.45);
+    --shadow-glow: 0 0 24px var(--color-brand-glow);
+
+    /* ── Animações ── */
+    --duration-fast:   150ms;
+    --duration-normal: 250ms;
+    --duration-slow:   500ms;
+    --ease:            cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ── Layout ── */
+    --max-width-form:    640px;
+    --max-width-content: 1240px;
+    --output-min-height: 400px;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--color-black);
+    color: var(--color-text-body);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ============================================================
+   BACKGROUND ANIMADO
+   ============================================================ */
+.bg-orbs {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    opacity: 0.55;
+    will-change: transform;
+}
+
+.orb-1 {
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(34,197,94,0.4), transparent 70%);
+    top: -180px;
+    left: -140px;
+    animation: orbFloat1 14s ease-in-out infinite;
+}
+
+.orb-2 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(59,130,246,0.3), transparent 70%);
+    bottom: -120px;
+    right: -100px;
+    animation: orbFloat2 18s ease-in-out infinite;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(168,85,247,0.25), transparent 70%);
+    top: 40%;
+    left: 55%;
+    animation: orbFloat3 22s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33%       { transform: translate(60px, 40px) scale(1.08); }
+    66%       { transform: translate(-30px, 70px) scale(0.95); }
+}
+
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    40%       { transform: translate(-70px, -50px) scale(1.1); }
+    70%       { transform: translate(40px, -30px) scale(0.92); }
+}
+
+@keyframes orbFloat3 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50%       { transform: translate(-80px, 50px) scale(1.15); }
+}
+
+/* Grid pattern */
+.bg-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        linear-gradient(var(--color-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 44px 44px;
+    opacity: 0.18;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: var(--space-10) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    animation: fadeInDown var(--duration-slow) var(--ease) both;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--color-brand-dim);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    color: var(--color-brand);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-3);
+    border-radius: 9999px;
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, var(--font-size-4xl));
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
+}
+
+h1 span {
+    background: linear-gradient(135deg, var(--color-brand) 0%, #6ee7b7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header > p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-lg);
+    margin: 0;
+}
+
+/* ============================================================
+   FORMULÁRIO
+   ============================================================ */
+.form-section {
+    width: 100%;
+    max-width: var(--max-width-form);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    animation: fadeInUp var(--duration-slow) var(--ease) 100ms both;
+}
+
+.caixa-texto {
+    resize: none;
+    width: 100%;
+    padding: var(--space-4);
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    outline: none;
+    transition:
+        border-color var(--duration-normal) var(--ease),
+        box-shadow var(--duration-normal) var(--ease);
+}
+
+.caixa-texto::placeholder {
+    color: var(--color-text-muted);
+}
+
+.caixa-texto:focus {
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px var(--color-brand-dim);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--space-3);
+}
+
+/* ============================================================
+   BOTÃO PRINCIPAL
+   ============================================================ */
+.botao-gerar {
+    flex: 1;
+    background: var(--color-brand);
+    color: #000;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    position: relative;
+    overflow: hidden;
+    transition:
+        background var(--duration-normal) var(--ease),
+        box-shadow var(--duration-normal) var(--ease),
+        transform var(--duration-fast) var(--ease);
+}
+
+.botao-gerar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease);
+}
+
+.botao-gerar:hover {
+    background: var(--color-brand-hover);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-1px);
+}
+
+.botao-gerar:hover::before {
+    opacity: 1;
+}
+
+.botao-gerar:active {
+    transform: translateY(0px);
+}
+
+.botao-gerar:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+}
+
+/* Estados do botão */
+.btn-loading {
+    display: none;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.botao-gerar.carregando .btn-text   { display: none; }
+.botao-gerar.carregando .btn-loading { display: flex; }
+.botao-gerar.carregando {
+    background: var(--color-brand-hover);
+    cursor: not-allowed;
+    opacity: 0.85;
+    transform: none;
+}
+
+/* Spinner */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-top-color: #000;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   MENSAGEM DE ERRO
+   ============================================================ */
+.mensagem-erro {
+    width: 100%;
+    max-width: var(--max-width-form);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    animation: fadeInUp var(--duration-normal) var(--ease) both;
+}
+
+.mensagem-erro[hidden] { display: none; }
+
+/* ============================================================
+   OUTPUT — GRID LADO A LADO
+   ============================================================ */
+.output-section {
+    width: 100%;
+    animation: fadeInUp var(--duration-slow) var(--ease) both;
+}
+
+.output-section[hidden] { display: none; }
+
+.output-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    align-items: stretch;
+}
+
+/* Card container */
+.output-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    min-height: var(--output-min-height);
+    transition: box-shadow var(--duration-normal) var(--ease);
+}
+
+.output-card:hover {
+    box-shadow: var(--shadow-md), 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* Header do card */
+.output-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border);
+    background: var(--color-surface-raised);
+    flex-shrink: 0;
+}
+
+.output-dots {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.output-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-border);
+}
+
+.output-dots span:nth-child(1) { background: #ef4444; }
+.output-dots span:nth-child(2) { background: #f59e0b; }
+.output-dots span:nth-child(3) { background: #22c55e; }
+
+.output-card-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex: 1;
+}
+
+/* Badge "live" */
+.preview-badge {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-brand);
+    background: var(--color-brand-dim);
+    border: 1px solid rgba(34,197,94,0.25);
+    border-radius: 9999px;
+    padding: 2px var(--space-2);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+}
+
+/* ============================================================
+   BOTÃO COPIAR
+   ============================================================ */
+.botao-copiar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    background: transparent;
+    border: var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    padding: var(--space-1) var(--space-2);
+    cursor: pointer;
+    transition:
+        color var(--duration-fast) var(--ease),
+        border-color var(--duration-fast) var(--ease),
+        background var(--duration-fast) var(--ease);
+}
+
+.botao-copiar:hover {
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+    background: var(--color-brand-dim);
+}
+
+.botao-copiar.copiado {
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+}
+
+/* ============================================================
+   BLOCO DE CÓDIGO
+   ============================================================ */
+.bloco-codigo {
+    flex: 1;
+    padding: var(--space-4);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    color: var(--color-code);
+    line-height: var(--line-height-code);
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* ============================================================
+   IFRAME PREVIEW
+   ============================================================ */
+.resultado-codigo {
+    flex: 1;
+    width: 100%;
+    border: none;
+    background: #fff;
+    display: block;
+}
+
+/* ============================================================
+   ANIMAÇÕES DE ENTRADA
+   ============================================================ */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--space-6) var(--space-4);
+        gap: var(--space-6);
+    }
+
+    .output-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .output-card {
+        min-height: 300px;
+    }
+}
