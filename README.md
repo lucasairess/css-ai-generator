@@ -2,6 +2,9 @@
 
 > Interface web que transforma descrições em linguagem natural em código HTML + CSS animado, usando a API da Groq (LLaMA 3.3-70b) como motor de geração.
 
+**🔗 [Teste a Demo Online Aqui!](https://lucasairess.github.io/gerador-css-ia-devclub/)**
+
+
 ---
 
 ## 📋 Sumário
