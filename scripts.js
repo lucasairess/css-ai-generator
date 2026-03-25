@@ -161,9 +161,10 @@ async function copiarCodigo() {
 // Clique no botão gerar
 botao.addEventListener("click", gerarCodigo)
 
-// Enter no textarea (Ctrl+Enter ou Cmd+Enter)
+// Enter no textarea para gerar (Enter = enviar, Shift+Enter = pular linha)
 caixaTexto.addEventListener("keydown", (evento) => {
-    if ((evento.ctrlKey || evento.metaKey) && evento.key === "Enter") {
+    if (evento.key === "Enter" && !evento.shiftKey) {
+        evento.preventDefault() // Evita quebrar a linha ao enviar
         gerarCodigo()
     }
 })
